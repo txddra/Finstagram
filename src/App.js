@@ -12,10 +12,13 @@ import memories from "./images/memories.jpg";
 import useStyles from './styles';
 
 const App= ()=> {
- const classes = useStyles();
- const dispatch = useDispatch();
+  //material ui
+const classes = useStyles();
 
- useEffect(()=>{
+
+const dispatch = useDispatch();
+
+useEffect(()=>{
     dispatch(getPosts());
   }, [dispatch])
 
