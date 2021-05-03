@@ -24,6 +24,8 @@ const handleSubmit =()=>{
                 variant= "outlined"
                 label="Creator"
                 fullWidth value={postData.creator}
+                // keeps data persistent  g
+                onChange={(e)=>setPostData({...postData, creator: e.target.value})}
                 ></TextField>
 
             </form>
