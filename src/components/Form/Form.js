@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {TextField,Button,Typography, Paper} from '@material-ui/core';
+import {TextField, Button,Typography, Paper} from '@material-ui/core';
+import FileBase from "react-file-base64"
 
 import useStyles from './styles';
 const Form =() =>{
@@ -15,9 +16,14 @@ const handleSubmit =()=>{
     
 }
 
+const clear =()=>{
+
+
+}
+
     return(
         <Paper className={classes.paper}> 
-            <form autoComplete="off" noValidate className={classes.form} onSubmit={handleSubmit}>
+            <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
                 <Typography variant = "h6">Creating a memory</Typography>
                 {/* for creator */}
                 <TextField name="creator" variant= "outlined" label="Creator" fullWidth value={postData.creator}
@@ -39,7 +45,10 @@ const handleSubmit =()=>{
                 // keeps data persistent 
                 onChange={(e)=>setPostData({...postData, tags: e.target.value})}
                 ></TextField>
-
+                <div className={classes.fileInput}>
+                    <FileBase type="file" multiple={false} onDone={({base64})=>setPostData({...postData, selectedFile:base64})}></FileBase> </div>
+                <Button className={classes.buttonSubmit} variant ="contained" color="primary" size ="large" type="submit" fullWidth>submit</Button>
+                <Button variant ="contained" color="secondary" size ="small" onClick={clear} fullWidth>clear</Button>
             </form>
         </Paper>
     );
